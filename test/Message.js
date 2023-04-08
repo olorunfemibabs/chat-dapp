@@ -3,9 +3,12 @@
 const { ethers } = require("hardhat");
   
   describe("Message", function () {
+
+    let deployer, user;
+    let message;
     
     const NAME = "Asiwaju";
-    const SYMBOL = "ASJ"
+    const SYMBOL = "ASJ";
 
     beforeEach(async () => {
         //Setup accounts
@@ -17,18 +20,24 @@ const { ethers } = require("hardhat");
     })
 
     describe("Deployment", function() {
-        it("Set the name", async() => {
+        it("Sets the name", async() => {
+            //fetch name
             const result = await message.name();
+            //checks name
             expect(result).to.equal(NAME);
         });
 
-        it("Set the symbol", async() => {
+        it("Sets the symbol", async() => {
+            //fetch symbol
             const result = await message.symbol();
+            //checks symbol
             expect(result).to.equal(SYMBOL);
         });
 
-        it("Set the owner", async() => {
+        it("Sets the owner", async() => {
+            //fetch owner
             const result = await  message.owner()
+            //check owner
             expect(result).to.equal(deployer.address)
         });
     })
